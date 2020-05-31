@@ -4,11 +4,79 @@ import Buttom from "../Button/index";
 
 const App = () => {
   const [value, setValue] = useState("0");
+  const [memory, setMemory] = useState(null);
+  const [operator, setOperator] = useState(null);
 
   const handleButtonPress = (content) => () => {
-    setValue((parseFloat(value) + content).toString());
-  };
+    const numberPress = parseFloat(value);
 
+    if (content === "AC") {
+      setValue("0");
+      setMemory(null);
+      setOperator(null);
+      return;
+    }
+
+    if (content === "±") {
+      setValue((numberPress * -1).toString());
+      setOperator(null);
+
+      return;
+    }
+    if (content === "%") {
+      setValue((numberPress / 100).toString());
+      setMemory(null);
+      setOperator(null);
+
+      return;
+    }
+
+    if (content === "+") {
+      setMemory(parseFloat(value));
+      setValue("0");
+      setOperator("+");
+
+      return;
+    }
+
+    if (content === "−") {
+      setMemory(parseFloat(value));
+      setValue("0");
+      setOperator("−");
+      return;
+    }
+    if (content === "×") {
+      setMemory(parseFloat(value));
+      setValue("0");
+      setOperator("×");
+      return;
+    }
+    if (content === "÷") {
+      setMemory(parseFloat(value));
+      setValue("0");
+      setOperator("÷");
+      return;
+    }
+
+    if (content === "=") {
+      if (!operator) return;
+      if (operator === "+") {
+        setValue(memory + parseFloat(value).toString());
+      } else if (operator === "−") {
+        setValue(memory - parseFloat(value).toString());
+      } else if (operator === "×") {
+        setValue(memory * parseFloat(value).toString());
+      } else if (operator === "÷") {
+        setValue(memory / parseFloat(value).toString());
+      }
+      setMemory(null);
+      setOperator(null);
+
+      return;
+    }
+
+    setValue(parseFloat(numberPress + content).toString());
+  };
   return (
     <>
       <div className="App">
