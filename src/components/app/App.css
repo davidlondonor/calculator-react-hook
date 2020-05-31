@@ -1,0 +1,26 @@
+.App {
+  background-color: rgb(238, 36, 144);
+  width: 35.188rem;
+  height: 76.125rem;
+  counter-reset: #fff;
+  border-radius: 3.125rem;
+  padding: 1.25rem;
+}
+.top {
+  height: 25rem;
+  padding: 0 15.625rem;
+}
+.display {
+  font-size: 8.125rem;
+  margin-bottom: 1.25rem;
+  font-weight: 18.75rem;
+  text-align: right;
+}
+.buttons {
+  display: grid;
+  grid-gap: 1.25rem;
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+}
+.buttom {
+}
