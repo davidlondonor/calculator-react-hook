@@ -1,26 +1,50 @@
+* {
+  background-color: black;
+}
+
 .App {
-  background-color: rgb(238, 36, 144);
-  width: 35.188rem;
+  background-color: rgb(0, 0, 0);
+  /* width: 35rem; */
   height: 76.125rem;
   counter-reset: #fff;
   border-radius: 3.125rem;
   padding: 1.25rem;
+  margin: 0 auto;
+  position: relative;
 }
 .top {
-  height: 25rem;
-  padding: 0 15.625rem;
+  height: 1rem;
+  width: 35rem;
+  margin: 0 auto;
+  padding: 0 rem;
+  color: antiquewhite;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .display {
+  width: 100%;
   font-size: 8.125rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0rem;
+
   font-weight: 18.75rem;
-  text-align: right;
+  text-align: center;
+  color: wheat;
 }
 .buttons {
   display: grid;
+  width: 35rem;
+  margin: 0 auto;
   grid-gap: 1.25rem;
   grid-template-rows: repeat(5, 1fr);
   grid-template-columns: repeat(4, 1fr);
 }
 .buttom {
+  position: absolute;
+  width: 200px;
+  height: 5px;
+  background: wheat;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%);
 }

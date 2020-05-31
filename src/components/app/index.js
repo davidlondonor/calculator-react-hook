@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import Buttom from "../Button/index";
 
@@ -6,6 +6,11 @@ const App = () => {
   const [value, setValue] = useState("0");
   const [memory, setMemory] = useState(null);
   const [operator, setOperator] = useState(null);
+  const [time, setTime] = useState(new Date());
+
+  useEffect(() => {
+    setTime(new Date());
+  }, [new Date().getMinutes()]);
 
   const handleButtonPress = (content) => () => {
     const numberPress = parseFloat(value);
@@ -19,40 +24,91 @@ const App = () => {
 
     if (content === "±") {
       setValue((numberPress * -1).toString());
-      setOperator(null);
-
+      // setOperator(null);
       return;
     }
     if (content === "%") {
       setValue((numberPress / 100).toString());
       setMemory(null);
       setOperator(null);
+      return;
+    }
 
+    if (content === ".") {
+      if (value.includes(".")) return;
+      setValue(value + ".");
       return;
     }
 
     if (content === "+") {
-      setMemory(parseFloat(value));
+      if (operator === null) {
+        if (operator === "+") {
+          setMemory(memory + parseFloat(value));
+        } else if (operator === "−") {
+          setMemory(memory - parseFloat(value));
+        } else if (operator === "×") {
+          setMemory(memory * parseFloat(value));
+        } else if (operator === "÷") {
+          setMemory(memory / parseFloat(value));
+        }
+      } else {
+        setMemory(parseFloat(value));
+      }
       setValue("0");
       setOperator("+");
-
       return;
     }
 
     if (content === "−") {
-      setMemory(parseFloat(value));
+      if (operator === null) {
+        if (operator === "+") {
+          setMemory(memory + parseFloat(value));
+        } else if (operator === "−") {
+          setMemory(memory - parseFloat(value));
+        } else if (operator === "×") {
+          setMemory(memory * parseFloat(value));
+        } else if (operator === "÷") {
+          setMemory(memory / parseFloat(value));
+        }
+      } else {
+        setMemory(parseFloat(value));
+      }
       setValue("0");
       setOperator("−");
       return;
     }
     if (content === "×") {
-      setMemory(parseFloat(value));
+      if (operator === null) {
+        if (operator === "+") {
+          setMemory(memory + parseFloat(value));
+        } else if (operator === "−") {
+          setMemory(memory - parseFloat(value));
+        } else if (operator === "×") {
+          setMemory(memory * parseFloat(value));
+        } else if (operator === "÷") {
+          setMemory(memory / parseFloat(value));
+        }
+      } else {
+        setMemory(parseFloat(value));
+      }
       setValue("0");
       setOperator("×");
       return;
     }
     if (content === "÷") {
-      setMemory(parseFloat(value));
+      if (operator === null) {
+        if (operator === "+") {
+          setMemory(memory + parseFloat(value));
+        } else if (operator === "−") {
+          setMemory(memory - parseFloat(value));
+        } else if (operator === "×") {
+          setMemory(memory * parseFloat(value));
+        } else if (operator === "÷") {
+          setMemory(memory / parseFloat(value));
+        }
+      } else {
+        setMemory(parseFloat(value));
+      }
       setValue("0");
       setOperator("÷");
       return;
@@ -71,16 +127,27 @@ const App = () => {
       }
       setMemory(null);
       setOperator(null);
-
       return;
     }
 
-    setValue(parseFloat(numberPress + content).toString());
+    if (value[value.length - 1] === ".") {
+      setValue(value + content);
+    } else {
+      setValue(parseFloat(numberPress + content).toString());
+    }
   };
   return (
     <>
       <div className="App">
-        <div className="top">4:43</div>
+        <div className="top">
+          <div className="time">
+            {time.getHours().toString().padStart(2, "0")}:
+            {time.getMinutes().toString().padStart(2, "0")}
+          </div>
+          <div className="menu">
+            <p>Calculadora con Hooks y useState</p>
+          </div>
+        </div>
         <div className="display">{value}</div>
         <div className="buttons">
           <Buttom
@@ -135,7 +202,7 @@ const App = () => {
             type="operator"
           />
         </div>
-        <div className="buttom">-</div>
+        <div className="buttom" />
       </div>
     </>
   );
