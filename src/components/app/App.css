@@ -1,9 +1,13 @@
 * {
-  background-color: black;
+  background-color: transparent;
 }
 
 .App {
-  background-color: rgb(0, 0, 0);
+  background: #16edff;
+  background: -webkit-linear-gradient(top right, #16edff, #8b2dde);
+  background: -moz-linear-gradient(top right, #16edff, #8b2dde);
+  background: linear-gradient(to bottom left, #16edff, #8b2dde);
+  /* background-color: rgb(0, 0, 0); */
   /* width: 35rem; */
   height: 76.125rem;
   counter-reset: #fff;
@@ -21,18 +25,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: transparent;
 }
 .display {
   width: 100%;
   font-size: 8.125rem;
   margin-bottom: 0rem;
-
+  background-color: transparent;
   font-weight: 18.75rem;
   text-align: center;
   color: wheat;
 }
 .buttons {
   display: grid;
+  background-color: transparent;
   width: 35rem;
   margin: 0 auto;
   grid-gap: 1.25rem;
