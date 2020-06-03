@@ -1,4 +1,5 @@
 {
+  "homepage": "https://davidlondonor.github.io/calculator-react-hook/",
   "name": "iphone-calculator",
   "version": "0.1.0",
   "private": true,
@@ -16,7 +17,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "homepage": "https://davidlondonor.github.io/calculator-react-hook/"
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
